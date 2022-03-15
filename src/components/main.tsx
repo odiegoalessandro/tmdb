@@ -16,9 +16,7 @@ function Main({ children }: MainProps){
         <meta property="og:type" content="Coloque o tipo do site" />
         <title>Example</title>
       </Head>
-      <Container maxW="container.lg">
-        {children}
-      </Container>
+      {children}
     </Box>
   )
 }
