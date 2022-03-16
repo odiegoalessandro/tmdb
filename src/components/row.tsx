@@ -26,7 +26,7 @@ export default function Row({ movies, label }){
   }
 
   return (
-    <Box w="100vw" h="280px">
+    <Box w="100vw" h="280px" as="section">
       <Heading 
         mb="15px" 
         mt="20px" 
@@ -78,6 +78,7 @@ export default function Row({ movies, label }){
               <Image 
                 width="150px" 
                 height="230px"
+                m="0 5px"
                 src={poster_path} 
                 alt={movie.title} 
                 key={movie.id}
