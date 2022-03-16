@@ -1,6 +1,7 @@
-import { Box, Flex } from "@chakra-ui/react"
+import { Box, Flex, Spacer, VStack } from "@chakra-ui/react"
 import { GetStaticProps } from "next"
 import { useEffect, useState } from "react"
+import Navbar from "../components/navbar"
 import Row from "../components/row"
 import Slider from "../components/slider"
 import TMDb from "../lib/TMDb"
@@ -18,9 +19,17 @@ export default function Home({
   romance,
 }) {
   const [sliderCurrentMovie, setSliderCurrentMovie] = useState<any>({})
+  const [currentColor, setCurrentColor] = useState("transparent")
 
   
   useEffect(() => {
+    function scrollEvent(){
+      if(window.scrollY > 10){
+        setCurrentColor("black")
+      } else{
+        setCurrentColor("transparent")
+      }
+    }
 
     function selectRandomMovie(){
       const randomIndex = Math.floor(Math.random() * originals.results.length)
@@ -28,24 +37,31 @@ export default function Home({
     
       return chosenMovie
     }
-
+    
+    window.addEventListener("scroll", scrollEvent)
+    
     setSliderCurrentMovie(selectRandomMovie())
+
+    return () => window.removeEventListener("scroll", scrollEvent)
   }, [originals])
 
   return (
     <Flex flexDirection="column">
-      <Box h="70vh" />
+      <Navbar currentColor={currentColor} />
+      <div style={{height: "70vh"}} />
       <Slider movie={sliderCurrentMovie} />
-      <Row label="Originais da netflix" movies={originals.results} />
-      <Row label="Em alta" movies={trending.results} />
-      <Row label="Em cartaz" movies={movieTheater.results} />
-      <Row label="Terror" movies={horror.results} />
-      <Row label="Ação" movies={action.results} />
-      <Row label="Aventura" movies={adventure.results} />
-      <Row label="Comédia" movies={comedy.results} />
-      <Row label="Ficção cientifica" movies={scienceFiction.results} />
-      <Row label="Drama" movies={drama.results} />
-      <Row label="Romance" movies={romance.results} />
+      <VStack mb="3rem">
+        <Row label="Originais da netflix" movies={originals.results} />
+        <Row label="Em alta" movies={trending.results} />
+        <Row label="Em cartaz" movies={movieTheater.results} />
+        <Row label="Terror" movies={horror.results} />
+        <Row label="Ação" movies={action.results} />
+        <Row label="Aventura" movies={adventure.results} />
+        <Row label="Comédia" movies={comedy.results} />
+        <Row label="Ficção cientifica" movies={scienceFiction.results} />
+        <Row label="Drama" movies={drama.results} />
+        <Row label="Romance" movies={romance.results} />
+      </VStack>
     </Flex>
   )
 }

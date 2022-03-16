@@ -5,4 +5,3 @@
 - [ ] menu
 - [ ] rodapé
 - [ ] pagina de filmes
-- [ ] pesquisa

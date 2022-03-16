@@ -43,7 +43,7 @@ export default function Row({ movies, label }){
         h="230px"
         bgColor="#00000070"
         pos="absolute"
-        zIndex={9}
+        zIndex={2}
         onClick={handleLeftArrow}
         borderRadius="none"
         _hover={{
@@ -57,7 +57,7 @@ export default function Row({ movies, label }){
         h="230px"
         bgColor="#00000070"
         pos="absolute"
-        zIndex={9}
+        zIndex={2}
         onClick={handleRightArrow}
         borderRadius="none"
         _hover={{
@@ -80,7 +80,8 @@ export default function Row({ movies, label }){
                 height="230px"
                 m="0 5px"
                 src={poster_path} 
-                alt={movie.title} 
+                alt={movie.title}
+                title={movie.title}
                 key={movie.id}
                 transition=".3s"
                 _hover={{
