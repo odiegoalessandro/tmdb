@@ -1,4 +1,4 @@
-import { Box, Flex, Spacer, VStack } from "@chakra-ui/react"
+import { Flex, VStack } from "@chakra-ui/react"
 import { GetStaticProps } from "next"
 import { useEffect, useState } from "react"
 import Navbar from "../components/navbar"

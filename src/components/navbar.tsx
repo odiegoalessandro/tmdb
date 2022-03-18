@@ -13,6 +13,7 @@ export default function Navbar({ currentColor }){
       px="2rem"
       justify="space-between"
       transition="linear .3s"
+      as="nav"
     >
       <Link href="/" passHref>
         <Image src="/netflix-logo.svg" width="120px" height="50px" alt="netflix logo" />
